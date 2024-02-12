@@ -1,0 +1,74 @@
+
+{
+  "intents": [
+  {
+  "tag": "greeting",
+  "patterns": [
+  "Hi",
+  "Hello",
+  "Hey",
+  "Good morning",
+  "Good afternoon"
+  ],
+  "responses": [
+  "Hello! How can I assist you today?",
+  "Hi! How may I help you?",
+  "Hey there! How can I be of service?"
+  ]
+  },
+  {
+  "tag": "customer_request",
+  "patterns": [
+  "I need help with a customer",
+  "Customer assistance",
+  "Customer problem"
+  ],
+  "responses": [
+  "Of course, I'm here to help. Can you provide me with more details about the customer's request?",
+  "I'm ready to assist you with the customer. Please provide me with more information about the situation."
+  ]
+  },
+  {
+  "tag": "problem_resolution",
+  "patterns": [
+  "How to resolve a technical issue?",
+  "Problem with the system",
+  "System error"
+  ],
+  "responses": [
+  "I can help you with resolving the technical issue. Could you please provide me with more information about the encountered error or anomaly?",
+  "To resolve a technical issue, I'll need more details about the incident or error."
+  ]
+  },
+  {
+  "tag": "training",
+  "patterns": [
+  "Need training",
+  "Additional training",
+  "Improve skills"
+  ],
+  "responses": [
+  "I understand. Could you please tell me which areas you would like to improve or where you need additional training?",
+  "If you need additional training or want to enhance your skills, please let me know in which specific areas you would like to focus."
+  ]
+  },
+  {
+  "tag": "goodbye",
+  "patterns": [
+  "Thank you",
+  "Goodbye",
+  "See you later",
+  "Have a nice day"
+  ],
+  "responses": [
+  "You're welcome! If you have any more questions, feel free to ask. Goodbye!",
+  "You're welcome! Have a great day ahead. Goodbye!",
+  "No problem! If you need any further assistance, feel free to reach out. Goodbye!"
+  ]
+  }
+  ]
+  }
+  
+  
+
+

@@ -1,0 +1,132 @@
+{
+    "intents": [
+      {
+        "tag": "salutation",
+        "patterns": [
+          "Bonjour",
+          "Salut",
+          "Coucou",
+          "Bonjour le matin",
+          "Bonjour l'après-midi"
+        ],
+        "responses": [
+          "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
+          "Salut ! Comment puis-je vous aider ?",
+          "Coucou ! En quoi puis-je être utile ?"
+        ]
+      },
+        {
+        "tag": "agences",
+        "patterns": [
+          "Comment trouver la liste des agences ?"
+          
+        ],
+        "responses":
+         [
+          "Cliquer sur la rubrique agence ,vous trouverez la liste des agences et vous pouvez les filtrer par nom " 
+
+        ]
+      },
+      {
+        "tag": "probleme_resolution",
+        "patterns": [
+          "Comment résoudre un problème technique ?",
+          "Problème avec le système",
+          "Erreur système"
+        ],
+        "responses": [
+          "Je peux vous aider à résoudre le problème technique. Pourriez-vous me fournir plus d'informations sur l'erreur ou l'anomalie rencontrée ?",
+          "Pour résoudre un problème technique, j'ai besoin de plus de détails sur l'incident ou l'erreur."
+        ]
+      },
+      {
+        "tag": "entrain",
+        "patterns": [
+          "Besoin de formation",
+          "Formation supplémentaire",
+          "Améliorer ses compétences"
+        ],
+        "responses": [
+          "Je comprends. Pourriez-vous me dire dans quels domaines vous souhaitez vous améliorer ou où vous avez besoin de formation supplémentaire ?",
+          "Si vous avez besoin de formation supplémentaire ou si vous souhaitez améliorer vos compétences, veuillez me préciser dans quels domaines spécifiques vous souhaitez vous concentrer."
+        ]
+      },
+      {
+        "tag": "AuRevoir",
+        "patterns": [
+          "Merci",
+          "Au revoir",
+          "À plus tard",
+          "Bonne journée"
+        ],
+        "responses": [
+          "De rien ! Si vous avez d'autres questions, n'hésitez pas à demander. Au revoir !",
+          "De rien ! Passez une excellente journée. Au revoir !",
+          "Pas de problème ! Si vous avez besoin d'aide supplémentaire, n'hésitez pas à me contacter. Au revoir !"
+        ]
+      },
+      {
+        "tag": "information",
+        "patterns": [
+          
+          "Comment modifier mes informations ?"
+        ],
+        "responses": [
+          "Cliquer sur la rubrique Mon Profil/modifier/(renseigner vos infos)/Mettre à jour"
+        ]
+      },
+      {
+        "tag": "amicale",
+        "patterns": [
+          
+          "Comment consulter les conventions de l’Amicale ?"
+        ],
+        "responses": [
+          "Cliquer sur la rubrique Amicale /Conventions et choisir la thématique de la convention sport,hotels..."
+        ]
+      },
+      {
+        "tag": "formation",
+        "patterns": [
+          
+          "Comment accéder au support de formation ?"
+        ],
+        "responses": [
+          "Cliquer sur la rubrique RH/Formation/Support de formation et choisir la formation"
+        ]
+      },
+      {
+        "tag": "employee",
+        "patterns": [
+          
+          "Comment accéder aux document concernant les demandes d’employés ?"
+        ],
+        "responses": [
+          "Cliquer sur la rubrique RH/Formation/Support de formation et choisir la formation"
+        ]
+      },
+      {
+        "tag": "employee",
+        "patterns": [
+          
+          "Comment accéder aux document concernant les demandes d’employés ?"
+        ],
+        "responses": [
+          "accédez à la rubrique RH / Documents à télécharger Sélectionnez la thématique de demande spécifique que vous souhaitez consulter (demande decongé, demande de financement  du personnel, demande d&#39;avance sur salaire ou autorisation de  sortie etc.)."
+        ]
+      },
+      {
+        "tag": "Projet",
+        "patterns": [
+          
+          "Comment consulter l’avancement des projets ?"
+        ],
+        "responses": [
+          "Cliquer sur Projets et vous pouvez voir l’état d’avancement de chaque projet."
+        ]
+      }
+
+
+    ]
+  }
+  

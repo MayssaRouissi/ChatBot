@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=yes">
+    <title>AlBaraka_Bot </title>
+    <meta name="description" content="Chat Bot UI/UX & html for web" />
+    <meta name="keywords" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin" />
+    <meta name="author" content="css3transition" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <meta name="description" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin | Css3Transition " />
+    <meta name="keywords" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin" />
+    <meta name="abstract" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin">
+    <meta name="author" content="Rahul Yaduvanshi">
+    <meta name="technologies" content="HTML5, CSS3, HTML, CSS, JQUERY, Bootstrap, Angular">
+    <meta name="distribution" content="Global">
+    <meta name="development" content="Rahul Yaduvanshi">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="city" content="New Delhi">
+    <meta name="country" content="india">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <!-- <link href="C:\Users\rouis\Desktop\chatbotchat\templates\js\bootstrap.min.js" rel="stylesheet" type="text/css" /> -->
+    <link href="C:\Users\rouis\Desktop\chatbotchat\templates\js\bootstrap.min.js" rel="stylesheet" type="text/css" />
+    <link href="C:\Users\rouis\Desktop\chatbotchat\templates\css\main.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link href="C:\Users\rouis\Desktop\chatbotchat\templates\css\select2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="C:\Users\rouis\Desktop\chatbotchat\templates\css\chatBot.css" rel="stylesheet" type="text/css"/>
+    <link href="C:\Users\rouis\Desktop\chatbotchat\templates\css\timeline.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Chat bot UI start -->
+<div class="chat-screen">
+    <div class="chat-header">
+        <div class="chat-header-title">
+            Let’s chat? - We're online
+
+           
+          <style>
+            
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 100px;
+  padding: 8px;
+  background-color:rgba(23, 23, 23, 0.28);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  padding: 4px;
+  cursor: pointer;
+}
+
+          </style>
+
+
+
+            <div class="dropdown" onclick="toggleDropdown()">
+              <span id="fleche"> ▼</span>
+              <div id="dropdown-content" class="dropdown-content" style="display: none;">
+                  <a onclick="changeLanguage('en')">En</a>
+                  <a onclick="changeLanguage('fr')">Fr</a>
+              </div>
+
+
+              <script>
+                  function toggleDropdown() {
+    var dropdownContent = document.getElementById('dropdown-content');
+    dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
+  }
+
+  function changeLanguage(language) {
+    document.getElementById('selected-language').textContent = 'Langue sélectionnée : ' + language;
+    toggleDropdown();
+    translateBotResponses(language);
+  }
+  function translateBotResponses(language) {
+    // Remplacez 'YOUR_GOOGLE_TRANSLATE_API_KEY' par votre clé API Google Translate
+    var apiKey = 'YOUR_GOOGLE_TRANSLATE_API_KEY';
+    var endpoint = 'https://translation.googleapis.com/language/translate/v2';
+
+    // Obtenez le contenu du chatbot que vous souhaitez traduire
+    var chatbotContent = "Hello, how can I help you?"; // Remplacez ceci par le contenu réel du chatbot
+
+    // Appelez l'API Google Translate pour effectuer la traduction
+    fetch(`${endpoint}?q=${encodeURIComponent(chatbotContent)}&target=${language}&key=${apiKey}`)
+      .then(response => response.json())
+      .then(data => {
+        var translatedText = data.data.translations[0].translatedText;
+        // Utilisez 'translatedText' pour mettre à jour le contenu du chatbot avec la traduction
+        console.log(translatedText);
+      })
+      .catch(error => {
+        console.error('Une erreur s\'est produite lors de la traduction.', error);
+      });
+  }
+              
+             
+  
+
+      
+
+  
+              </script>
+            </div>
+
+
+
+        </div>
+        
+        <div class="chat-header-option">
+          
+            <span class="dropdown custom-dropdown">
+              
+             
+                
+            </span>
+            
+        </div>
+        
+    </div>
+   
+        <div class="chat-input"   id="chatput" >
+            <div class="chat-body"   id ="chatch">
+              <style>
+                .chat-start {
+                  font-size: 14px;
+                  color: #666;
+                }
+              </style>
+              
+              <div class="chat-start" id="chatStart">
+                <!-- Le contenu sera mis à jour automatiquement -->
+              </div>
+
+
+
+             
+              
+              <script>
+                // Fonction pour mettre à jour la date et l'heure dans la div
+                function updateChatStart() {
+                  const chatStartDiv = document.getElementById('chatStart');
+                  const date = new Date();
+              
+                  // Obtenir le jour de la semaine en français
+                  const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+                  const dayOfWeek = days[date.getDay()];
+              
+                  // Obtenir l'heure sans les secondes
+                  const hours = date.getHours();
+                  const minutes = date.getMinutes();
+                  const ampm = hours >= 12 ? 'PM' : 'AM';
+                  const formattedTime = `${hours % 12 || 12}:${minutes < 10 ? '0' : ''}${minutes} ${ampm}`;
+              
+                  // Mettre à jour le contenu de la div
+                  chatStartDiv.innerText = `${dayOfWeek}, ${formattedTime}`;
+                }
+              
+                // Appeler la fonction une fois au début pour afficher l'heure d'ouverture de la conversation
+                updateChatStart();
+              </script>
+              
+    
+                <div class="chat-bubble you">
+                    Welcome to our site, if you need help simply reply to this message, we are online and ready to help.
+                </div>
+    
+                <!-- <div class="chat-bubble me">
+                    Hi, I am back
+                </div>
+                
+                <div class="chat-bubble me">
+                I just want my Report Status.
+                </div>
+                
+                <div class="chat-bubble me">
+                    As i am not getting any weekly reports nowadays.
+                </div> -->
+                
+                <div class="chat-bubble you">
+                    <svg xmlns="C:\Users\lenovo\Desktop\chat-bot-html-template\gif 7.webp" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto;display: block;shape-rendering: auto;width: 43px;height: 20px;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <circle cx="0" cy="44.1678" r="15" fill="#ffffff">
+                            <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.6s"></animate>
+                        </circle> <circle cx="45" cy="43.0965" r="15" fill="#ffffff">
+                        <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.39999999999999997s"></animate>
+                    </circle> <circle cx="90" cy="52.0442" r="15" fill="#ffffff">
+                        <animate attributeName="cy" calcMode="spline" keySplines="0 0.5 0.5 1;0.5 0 1 0.5;0.5 0.5 0.5 0.5" repeatCount="indefinite" values="57.5;42.5;57.5;57.5" keyTimes="0;0.3;0.6;1" dur="1s" begin="-0.19999999999999998s"></animate>
+                    </circle></svg>
+                </div>
+            </div>
+        
+            <div class="chat-input">
+                <div id="chat">
+                  <input type="text" id="messageInput" placeholder="Type a message...">
+                </div>
+
+
+
+                                                        <!---------------- DEBUT MICRO --------------------->
+
+
+
+                <div class="input-action-icon">
+                  <a id="sendButton" href="#" onclick="sendMessage()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </a>
+                  
+                  <a id="voiceButton" href="#" onclick="startVoiceRecognition()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-microphone">
+                      <path d="M9 16c0 2.76 2.24 5 5 5s5-2.24 5-5V4c0-2.76-2.24-5-5-5S9 1.24 9 4v12z"></path>
+                      <path d="M12 19c1.66 0 3-1.34 3-3h-6c0 1.66 1.34 3 3 3z"></path>
+                      <line x1="9" y1="23" x2="15" y2="23"></line>
+                      <line x1="12" y1="20" x2="12" y2="23"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+        </div>
+    
+
+<!--           
+ 
+        <div class="row">
+            <div class="col-md-12 text-center mb-2">
+                <p>Hi 👋! Please fill out the form below to start chatting with the next available agent.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email">
+                </div>
+            </div>
+          
+            <div class="col-md-12">
+                <button class="btn btn-primary btn-rounded btn-block">Start Chat</button>
+            </div>
+           <div class="col-md-12">
+               <div class="powered-by">Powered by css3transition</div>
+           </div>
+        </div> -->
+  
+
+
+
+
+<!----------------- DEBUT ICONE MICRO + ICONE ENVOYER ------------------------>
+
+
+
+      
+              <style>
+                .input-action-icon {
+                  display: flex;
+                  flex-direction: row-reverse; /* Inverser l'ordre des icônes */
+                }
+              
+                .input-action-icon a {
+                  margin-right: 10px; /* Ajoutez une marge à droite pour séparer les icônes */
+                }
+              </style>
+              
+              <div class="chat-input hide">
+                <div id="chat">
+                  <input type="text" id="messageInput" placeholder="Type a message...">
+                </div>
+
+
+
+                                                        <!---------------- DEBUT MICRO --------------------->
+
+
+
+                <div class="input-action-icon">
+                  <a id="sendButton" href="#" onclick="sendMessage()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </a>
+                  
+                  <a id="voiceButton" href="#" onclick="startVoiceRecognition()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-microphone">
+                      <path d="M9 16c0 2.76 2.24 5 5 5s5-2.24 5-5V4c0-2.76-2.24-5-5-5S9 1.24 9 4v12z"></path>
+                      <path d="M12 19c1.66 0 3-1.34 3-3h-6c0 1.66 1.34 3 3 3z"></path>
+                      <line x1="9" y1="23" x2="15" y2="23"></line>
+                      <line x1="12" y1="20" x2="12" y2="23"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              
+              <script>
+                function displayMessage(message) {
+                  const chat = document.getElementById('chat');
+                  const messageElement = document.createElement('div');
+                  messageElement.innerText = message;
+                  chat.appendChild(messageElement);
+                }
+              
+                function startVoiceRecognition() {
+                  const recognition = new webkitSpeechRecognition() || SpeechRecognition();
+                  recognition.lang = 'fr-FR';
+                  recognition.start();
+              
+                  recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    displayMessage("Vous avez dit : " + transcript);
+                    // Ici, vous pouvez envoyer le texte transcrit à votre chatbot pour une interaction vocale.
+                  };
+              
+                  recognition.onerror = function(event) {
+                    console.error('Erreur de reconnaissance vocale :', event.error);
+                  };
+                }
+              
+                function sendMessage() {
+                  const messageInput = document.getElementById('messageInput');
+                  const message = messageInput.value;
+                  if (message.trim() !== '') {
+                    displayMessage("Vous : " + message);
+                    // Ici, vous pouvez envoyer le message à votre chatbot pour une interaction texte.
+                    messageInput.value = ''; // Effacer le contenu de la zone de saisie après l'envoi du message.
+                  }
+                }
+              </script>
+              
+
+
+
+
+                    
+            <script>
+              function displayMessage(message) {
+                const messageInput = document.getElementById('messageInput');
+                messageInput.value = message; // Remplace le contenu de la zone de saisie par le message transcrit
+              }
+        
+              function startVoiceRecognition() {
+                const recognition = new webkitSpeechRecognition() || SpeechRecognition();
+                recognition.lang = 'fr-FR';
+                recognition.start();
+        
+                recognition.onresult = function(event) {
+                  const transcript = event.results[0][0].transcript;
+                  displayMessage(transcript);
+                  // Ici, vous pouvez envoyer le texte transcrit à votre chatbot pour une interaction vocale.
+                };
+        
+                recognition.onerror = function(event) {
+                  console.error('Erreur de reconnaissance vocale :', event.error);
+                };
+              }
+              
+            </script>
+          </div>
+               
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+
+     <div class="chat-session-end hide">
+       <div class="container">
+          <!-- <h2>Formulaire de Mailing</h2>
+          <form>
+              <div class="form-group">
+                  <label for="email">Votre Email :</label>
+                  <input type="text" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                  <label for="objet">Objet :</label>
+                  <input type="text" id="objet" name="objet" required>
+              </div>
+              <div class="form-group">
+                  <label for="message">Message :</label>
+                  <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="btn">Envoyer</button>
+          </form>
+      </div>
+
+         <style>
+            body {
+          font-family: 'Arial', sans-serif;
+          background-color: #f2f2f2;
+          margin: 0;
+          padding: 0;
+      }
+      
+      .container {
+          max-width: 300px; /* Taille adaptée pour un affichage dans un chatbot */
+          margin: 0 auto;
+          padding: 10px;
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      h2 {
+          text-align: center;
+          color: #f35b03;
+          margin-top: 0;
+      }
+      
+      .form-group {
+          margin-bottom: 15px;
+      }
+      
+      label {
+          font-weight: bold;
+          display: block;
+          color: #555555;
+      }
+      
+      input[type="text"], textarea {
+          width: 100%;
+          padding: 8px;
+          font-size: 14px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+      }
+      
+      textarea {
+          height: 100px;
+      }
+      
+      .btn {
+          background-color: #42403f;
+          color: #ffffff;
+          padding: 8px 12px;
+          font-size: 14px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          display: block;
+          margin: 0 auto;
+      }
+      
+      .btn:hover {
+          background-color: #ff6200;
+      }
+      
+          </style>
+      
+         <script type="text/javascript">
+           function sendMail() {
+             var Address = document.getElementById('email').value;
+             var Subject = document.getElementById('subject').value;
+             var Body = document.getElementById('body').value;
+         
+             var Link =  'mailto:hello@domain.com?subject=' +encodeURIComponent(Subject) +
+                              '&body=' + encodeURIComponent(Body) +
+                              '%0D%0A%0D%0A' + 'Email: ' + encodeURIComponent(Address);
+         
+             window.location.href = Link;
+     
+            }
+         </script>
+         
+     
+   </span> 
+
+
+    --> </div>
+
+ 
+
+    
+</div> 
+
+
+
+<!-- Chat Bot UI Ends -->
+<!-- Time line Html Start -->
+
+
+
+
+      <div class="chat-bot-icon">
+        <div id="chatContainer">
+          <img id="chatbot1" src="C:\Users\rouis\Desktop\chatbotchat\templates\gif 9.gif" alt="Chatbot 1" onclick="toggleChatbots();hideChatBubble();">
+          <img id="chatbot2" src="C:\Users\rouis\Desktop\chatbotchat\templates\gif 8.webp" alt="Chatbot 2" onclick="toggleChatbots();" style="display: none;">
+        </div>
+      </div>
+      
+      <style>
+        .chat {
+          position: fixed;
+          bottom: 50px;
+          right: 60px;
+          display: inline-block;
+          background-color: #fd7403;
+          color: #fff;
+          border-radius: 30px;
+          padding: 10px;
+          margin: 10px;
+          animation: floatAnimation 2s infinite alternate;
+        }
+        
+        @keyframes floatAnimation {
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+          100% {
+            transform: translateY(100);
+          }
+        }
+      </style>
+      
+      <div class="chat" style="display: none;" id="chatMessage"></div>
+      
+      <script>
+        setTimeout(function() {
+          const message = "Besoin d'aide ?";
+          const delay = 70; // Délai en millisecondes entre chaque lettre
+          
+          let index = 0;
+          const chatMessage = document.getElementById("chatMessage");
+          
+          function writeMessage() {
+            chatMessage.textContent += message[index];
+            index++;
+            
+            if (index < message.length) {
+              setTimeout(writeMessage, delay);
+            }
+          }
+          
+          writeMessage();
+          
+          chatMessage.style.display = "block";
+        }, 2000);
+      </script>
+      
+      <script>
+        var clicked = false;
+        
+        function toggleChatbots() {
+          var chatbot1 = document.getElementById("chatbot1");
+          var chatbot2 = document.getElementById("chatbot2");
+        
+          if (!clicked) {
+            chatbot1.style.display = "none";
+            chatbot2.style.display = "block";
+            hideChatBubble();
+          } else {
+            chatbot1.style.display = "block";
+            chatbot2.style.display = "none";
+          }
+        
+          clicked = !clicked;
+        }
+        
+        function hideChatBubble() {
+          var chatBubble = document.getElementById("chatMessage");
+          chatBubble.style.display = "none";
+        }
+      </script>
+      
+
+
+
+
+        <!-- <div class="message"><b><b>Besoin d'aide ?</b></div> -->
+        
+        <!-- <script>
+            function hideChatBubble() {
+              var chatBubble = document.getElementById("chatBubble");
+              chatBubble.style.display = "none";
+            }
+          </script>
+      </div> -->
+      
+
+  
+
+<!-- 
+      
+<div class="chat-bubble">
+<style>
+ 
+ .chat-bubble {
+  position: right;
+  display: inline-block;
+  background-color: #5e5e5e;
+  color: #fff;
+  border-radius: 30px;
+  padding: 8px;
+  margin: 10px;
+  animation: slide-in 2.5s ;
+}
+
+@keyframes slide-in{
+  0% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0.5;
+  }
+}
+
+
+</style>
+    <div class="message">Besoin d'aide ?</div>
+  </div>
+  
+ -->
+
+
+
+
+
+
+ 
+
+
+
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="257be86a981729866f2fa61c-|49" defer=""></script>
+<!-- Time line Html Ends -->
+<!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+<script src="C:\Users\rouis\Desktop\chatbotchat\templates\js\jquery-3.1.1.min.js"></script>
+<script src="C:\Users\rouis\Desktop\chatbotchat\templates\js\popper.min.js"></script>
+<script src="C:\Users\rouis\Desktop\chatbotchat\templates\js\bootstrap.min.js"></script>
+<script src="C:\Users\rouis\Desktop\chatbotchat\templates\js\select2.min.js"></script>
+ <script>
+        $(document).ready(function(){
+            $(".select2_el").select2({
+            });
+        });
+        </script>
+
+   <!-- Élément audio pour le son de notification -->
+   <audio id="notificationSound" preload="auto">
+    <source src="click-124467.mp3" type="audio/mpeg">
+    <!-- Si le navigateur ne prend pas en charge le format audio MP3, vous pouvez fournir d'autres formats ici -->
+</audio>
+   
+
+<script>
+   $(document).ready(function () 
+   {
+    // Variable pour suivre l'état de la lecture du son
+    let soundPlayed = false;
+
+    // Fonction pour jouer le son de notification
+    function playNotificationSound() {
+        const notificationSound = document.getElementById('notificationSound');
+        notificationSound.play();
+        soundPlayed = true;
+    }
+
+    //Toggle fullscreen
+    $(".chat-bot-icon").click(function (e) {
+        $(this).children('img').toggleClass('hide');
+        $(this).children('svg').toggleClass('animate');
+        $('.chat-screen').toggleClass('show-chat');
+
+        // Vérifier si le son a déjà été joué
+        if (!soundPlayed) {
+            playNotificationSound();
+        }
+    });
+
+    $('.chat-mail button').click(function () {
+        $('.chat-mail').addClass('hide');
+        $('.chat-body').removeClass('hide');
+        $('.chat-input').removeClass('hide');
+        $('.chat-header-option').removeClass('hide');
+    });
+
+    $('.end-chat').click(function () {
+        $('.chat-body').addClass('hide');
+        $('.chat-input').addClass('hide');
+        $('.chat-session-end').removeClass('hide');
+        $('.chat-header-option').addClass('hide');
+    });
+});
+
+</script>
+
+
+<script src="/static/jquery.min.js" ></script>
+
+<script src="C:\Users\rouis\Desktop\chatbotchat\jquery.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+<script>
+
+
+jQuery(document).ready(function() {
+
+$("#sendButton").click(function(e) {
+e.preventDefault();
+
+
+$.ajax({
+type: "POST",
+url: "/chatbot",
+data: {
+    question: $("#messageInput").val()
+},
+success: function(result) {
+  $("#chatch").append("<br>Me: "+$("#messageInput").val()+ "<br> Albaraka_Bot: "+result.response);
+  $("#messageInput").val("")
+},
+error: function(result) {
+    alert('error');
+}
+});
+
+
+
+});
+
+});
+
+
+</script>
+
+
+
+</body>
+
+</html>
